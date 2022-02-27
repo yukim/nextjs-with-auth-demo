@@ -14,12 +14,17 @@ export type Comment = {
 }
 export type Comments = Comment[]
 
-export type PostResponse = {
+export type PostsResponse = {
     data: {
         posts: {
             values: Posts
         }
-        comments?: {
+    };
+}
+
+export type CommentsResponse = {
+    data: {
+        comments: {
             values: Comments
         }
     };

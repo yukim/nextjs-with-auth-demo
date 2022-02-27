@@ -1,7 +1,7 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getSession } from 'next-auth/react';
-import { CommentResponse, PostResponse } from '../../../types/types';
+import { CommentResponse } from '../../../types/types';
 
 const url = `https://${process.env.ASTRA_DB_ID}-${process.env.ASTRA_DB_REGION}.apps.astra.datastax.com/api/graphql/${process.env.ASTRA_DB_KEYSPACE}`;
 
@@ -44,7 +44,6 @@ export default async function handler(
 
     if (response.ok) {
       const responseBody = await response.json() as CommentResponse;
-      console.log(responseBody)
       if (responseBody.data) {
         res.status(200).json(responseBody.data.comment.value)
       } else {
