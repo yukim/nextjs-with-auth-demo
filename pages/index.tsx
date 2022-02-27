@@ -2,7 +2,7 @@ import type { InferGetStaticPropsType, NextPage } from 'next'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import DateDisplay from '../components/DateDisplay'
-import { Post, PostResponse } from '../types/types'
+import { Post, PostsResponse } from '../types/types'
 
 const url = `https://${process.env.ASTRA_DB_ID}-${process.env.ASTRA_DB_REGION}.apps.astra.datastax.com/api/graphql/${process.env.ASTRA_DB_KEYSPACE}`;
 
@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps = async () => {
     body: JSON.stringify({ query }),
   })
 
-  const responseBody = await response.json() as PostResponse;
+  const responseBody = await response.json() as PostsResponse;
   return {
     props: {
       posts: responseBody.data.posts.values
