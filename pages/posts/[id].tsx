@@ -122,7 +122,7 @@ const PostPage: NextPage<{ post: Post, comments?: Comments }> = ({ post, comment
           <div>コメント:</div>
           {comments.map(({ user_id, comment, commented_at }) => {
             return (
-              <figure className="bg-slate-100 mb-1 rounded-xl p-4">
+              <figure key={user_id + commented_at} className="bg-slate-100 mb-1 rounded-xl p-4">
                 <div className="pt-2 text-left space-y-4">
                   <blockquote>
                     <p className="text-lg font-light">{comment}</p>
